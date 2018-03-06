@@ -1,6 +1,0 @@
-.detailWindow
-{
-	height:15rem;
-	overflow-y: scroll;
-	display:inline-block;
-}

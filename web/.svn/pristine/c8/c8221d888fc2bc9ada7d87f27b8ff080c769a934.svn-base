@@ -1,6 +1,0 @@
-.divcontainer
-{
-	display: flex;
-}
-.lbl {width:40%; float: left}
-.rec {width:100%;}

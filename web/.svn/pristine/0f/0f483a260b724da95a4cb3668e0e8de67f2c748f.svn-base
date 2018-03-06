@@ -1,7 +1,0 @@
-.canceled {
-	text-decoration: line-through;
-}
-.rb {
-	color: red;
-	font-weight: bold;
-}

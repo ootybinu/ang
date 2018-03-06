@@ -1,5 +1,0 @@
-.mytable1 >div {margin:.2rem 1rem;}
-.mytable1 {border :1px solid gray; 
-border-radius:.5rem;
-margin-bottom:1rem;
-}
