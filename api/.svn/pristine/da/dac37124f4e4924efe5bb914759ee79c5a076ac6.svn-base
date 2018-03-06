@@ -1,0 +1,15 @@
+#:D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.API\WaterAMR.API.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.API\WaterAMR.API.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business\WaterAMR.Business.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.API\WaterAMR.API.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business.Interfaces\WaterAMR.Business.Interfaces.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.API\WaterAMR.API.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess\WaterAMR.DataAccess.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.API\WaterAMR.API.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess.Interfaces\WaterAMR.DataAccess.Interfaces.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business\WaterAMR.Business.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business.Interfaces\WaterAMR.Business.Interfaces.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business\WaterAMR.Business.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.BusinessModels\WaterAMR.BusinessModels.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business\WaterAMR.Business.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess.Interfaces\WaterAMR.DataAccess.Interfaces.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business\WaterAMR.Business.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Utility\WaterAMR.Utility.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Business.Interfaces\WaterAMR.Business.Interfaces.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.BusinessModels\WaterAMR.BusinessModels.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess.Interfaces\WaterAMR.DataAccess.Interfaces.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataModels\WaterAMR.DataModels.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess\WaterAMR.DataAccess.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess.Interfaces\WaterAMR.DataAccess.Interfaces.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess\WaterAMR.DataAccess.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataModels\WaterAMR.DataModels.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataAccess\WaterAMR.DataAccess.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataRepository\WaterAMR.DataRepository.xproj
+D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.DataRepository\WaterAMR.DataRepository.xproj|D:\Project\IP\WaterAMR.2\NewCode\Dotnet\WaterAMR.API\src\WaterAMR.Utility\WaterAMR.Utility.xproj

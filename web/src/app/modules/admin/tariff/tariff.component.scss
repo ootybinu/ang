@@ -1,0 +1,11 @@
+.selected {
+	background-color: #31b0d5;
+}
+.table tr:nth-child(odd).selected 
+{
+background-color: #31b0d5;	
+}
+.table tr:nth-child(even).selected 
+{
+background-color: #31b0d5;	
+}

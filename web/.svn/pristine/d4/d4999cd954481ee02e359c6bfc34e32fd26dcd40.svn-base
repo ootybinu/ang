@@ -1,0 +1,204 @@
+	<app-title  title="User Configuration"></app-title>
+<div>
+	<div>
+		<ngb-alert *ngIf="alertMessage" [type]= "alertType" [dismissible]="true" (close)="alertMessage = null">
+			{{alertMessage}}
+		</ngb-alert>
+	</div>
+	<div *ngIf="!showDetailPanel" class="newPanel">
+		<button (click)="showDetail_click(true)" class="btn btn-primary">Add New User</button>
+	</div>
+
+	<div *ngIf="showPasswordPanel" class="detailPanel"> 
+		<form #passwordForm="ngForm">
+			<div class="container row">
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> LoginName </label>
+						<input type="text" name="loginname" [(ngModel)]="pd_loginname" #loginname="ngModel" style="width:10em;" disabled>
+					</div>
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Password <span class="req">*</span></label>
+						<input type="password" name="password1" [(ngModel)]="pd_password1" #password1="ngModel" required style="width:10em;" >
+						<div *ngIf="password1.errors && (password1.dirty || password1.touched)" class="alert alert-danger"> Password</div>
+					</div>
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Confirm Password <span class="req">*</span></label>
+						<input type="password" name="password2" [(ngModel)]="pd_password2" #password2="ngModel" required style="width:10em;" >
+						<div *ngIf="password2.errors && (password2.dirty || password2.touched)" class="alert alert-danger"> Password</div>
+					</div>
+			</div>
+			<div>
+
+				<button (click)="changePassword()" class="btn btn-primary" [disabled]="!passwordForm.form.valid">Update</button>
+				 <button (click)="showPasswordPanel=false; " class="btn btn-primary">Cancel</button> 
+			</div>
+		</form>
+ 	</div>
+
+
+	<div *ngIf="showDetailPanel" class="detailPanel">
+		<form #detailForm="ngForm">
+			<div class="container row">
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Login Name <span class="req">*</span></label>
+						<input type="text" name="loginname" [(ngModel)]="currentUser.emplog.loginname" #loginname="ngModel" required style="width:10em;" [disabled] ="!addNew">
+						<div *ngIf="loginname.errors && (loginname.dirty || loginname.touched)" class="alert alert-danger"> Login Name Required</div>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label > First Name <span class="req">*</span></label>
+						<input type="text" name="firstname" [(ngModel)]="currentUser.emp.firstname" #firstname="ngModel" required placeholder="First Name" style="width:10em;" >
+						<div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)" class="alert alert-danger"> First Name Required</div>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+
+						<label > Middle Name</label>
+						<input type="text" name="midname" [(ngModel)]="currentUser.emp.midname" #midname="ngModel"  placeholder="Middle Name" style="width:10em;" >
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label > Last Name </label>
+						<input type="text" name="lastname" [(ngModel)]="currentUser.emp.lastname" #lastname="ngModel" placeholder="Last Name" style="width:10em;" >
+
+			
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> RR Number <span class="req">*</span></label>
+						<input type="text" name="rrnumber" [(ngModel)]="currentUser.emp.rrnumber" #rrnumber="ngModel" required style="width:10em;" >
+						<div *ngIf="rrnumber.errors && (rrnumber.dirty || rrnumber.touched)" class="alert alert-danger"> RR number Required</div>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Mail Id <span class="req">*</span></label>
+						<input type="text" name="email" [(ngModel)]="currentUser.emp.email" #email="ngModel" required style="width:10em;" >
+						<div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">email  Required</div>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Mobile Number  <span class="req">*</span></label>
+						<input type="text" name="mobilenumber" [(ngModel)]="currentUser.emp.mobilenumber" #mobilenumber="ngModel" required style="width:10em;" >
+						<div *ngIf="mobilenumber.errors && (mobilenumber.dirty || mobilenumber.touched)" class="alert alert-danger">Mobile Number Required</div>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Address </label>
+						<input type="text" name="address" [(ngModel)]="currentUser.emp.address" #address="ngModel" style="width:10em;" >
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Roles <span class="req">*</span></label>
+						<select [(ngModel)]="currentUser.emplog.roles" name="roles"  #roles="ngModel" required>
+							<option *ngFor="let item of roleList" [value]="item.key">{{item.value}}</option>
+						</select>
+					 	<div *ngIf="roles.errors && (roles.dirty || roles.touched)" class="alert alert-danger"> Roles  Required</div> 
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" *ngIf="addNew">
+						<label> Password <span class="req">*</span></label>
+						<input type="Password" name="password" [(ngModel)]="currentUser.emplog.password" #password="ngModel" required style="width:10em;" >
+						</div>
+
+						<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" *ngIf="addNew">
+						<label> Confirm Password <span class="req">*</span></label>
+						<input type="Password" name="password1" [(ngModel)]="confirmpassword" required style="width:10em;" >
+					</div>
+					
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Division </label>
+						<select [(ngModel)]="currentUser.emp.divisionid" name="divisionid"  #divisionid="ngModel"
+						 (change)="placeChange($event, 2)" >
+							<option *ngFor="let item of divisionList" [value]="item.key">{{item.value}}</option>
+						</select>
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> SubDivsion  </label>
+						<select [(ngModel)]="currentUser.emp.subdivisionid" name="subdivisionid"  #subdivisionid="ngModel" >
+							<option *ngFor="let item of subDivisionList" [value]="item.key">{{item.value}}</option>
+						</select>
+					</div>
+					
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Default Page </label>
+						<input type="text" name="landingPage" [(ngModel)]="currentUser.emp.landingPage" #landingPage="ngModel" style="width:10em;" >
+					</div>
+
+					<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+						<label> Active </label>
+						<input type="checkbox" name="active" [(ngModel)]="currentUser.emplog.active" #active="ngModel" >
+					</div>
+			</div>
+			<div class="actionBar">
+				<button (click)="save();selectedRowId=undefined;" class="btn btn-primary " [disabled]="!detailForm.form.valid">Save</button>
+				<button (click)="showDetail_click(false); selectedRowId=undefined;" class="btn btn-primary">Cancel</button>
+			</div>
+
+			
+		</form>
+	</div>
+
+	<div>
+		<div *ngIf="userRows== undefined || userRows.length == 0">
+			No Data found
+		</div>
+		<div *ngIf="userRows != undefined && userRows.length >0 ">
+			<div *ngIf="isAdmin">
+				<table class="table table-responsive col-md-12 mytable" >
+					<tr >
+
+						<th style="width:10%"><div class="sort" (click)="sort('employeeid')" > ID</div></th>
+						<th style="width:20%"><div class="sort" (click)="sort('loginname')" > Login Name</div></th>
+						<th style="width:20%"><div class="sort" (click)="sort('name')" > Name </div></th>
+						<th style="width:10%">RR Number </th>
+						<th style="width:15%">Email  </th>
+						<th style="width:10%">Mobile Number</th>
+						<th style="width:7.5%">Detail</th> 
+						<th style="width:7.5%">Password</th> 
+					</tr>
+					<tr *ngFor="let rdata of userRows" [class]="rdata.employeeid == selectedRowId ?'selected':'normal'">
+<!-- 						<td> <input type="button" (click)="getDetail(rdata.employeeid)" value="Detail" class="btn " ></td> 
+						<td> <input type="button" (click)="showPassword(rdata.employeeid,rdata.loginname)" value="Change" class="btn " ></td>  -->
+						<td> {{rdata.employeeid}}</td>
+						<td> {{rdata.loginname}}</td>
+						<td> {{rdata.name}}</td>
+						<td> {{rdata.rrnumber}}</td>
+						<td> {{rdata.email}}</td>
+						<td> {{rdata.mobilenumber}}</td>
+						<td> <span (click)="getDetail(rdata.employeeid)" class="fa fa-edit"></span> </td>
+						<td> <span (click)="showPassword(rdata.employeeid,rdata.loginname)" class="fa fa-lock"></span> </td>
+					</tr>
+				</table>
+			</div>
+			<div *ngIf="!isAdmin">
+				<table class="table table-responsive col-md-12 mytable">
+					<tr>
+						
+						<th style="width:10%">ID</th>
+						<th style="width:20%">Login Name</th>
+						<th style="width:20%">Name </th>
+						<th style="width:10%">RR Number </th>
+						<th style="width:15%">Email  </th>
+						<th style="width:15%">Mobile Number</th>
+						<th style="width:10%">Detail</th> 
+					</tr>
+					<tr *ngFor="let rdata of userRows" [class]="rdata.employeeid == selectedRowId ?'selected':'normal'">
+						<!-- <td> <input type="button" (click)="getDetail(rdata.employeeid)" value="Detail" class="btn " ></td>  -->
+						<td> {{rdata.employeeid}}</td>
+						<td> {{rdata.loginname}}</td>
+						<td> {{rdata.name}}</td>
+						<td> {{rdata.rrnumber}}</td>
+						<td> {{rdata.email}}</td>
+						<td> {{rdata.mobilenumber}}</td>
+						<td> <span (click)="getDetail(rdata.employeeid)" class="fa fa-edit"></span> </td>
+					</tr>
+				</table>
+			</div>
+
+			<app-pagination [totalPages]="totalpages" (pageChange)="pageChanged($event)" >
+			</app-pagination>
+
+		</div>
+	</div>
+</div>

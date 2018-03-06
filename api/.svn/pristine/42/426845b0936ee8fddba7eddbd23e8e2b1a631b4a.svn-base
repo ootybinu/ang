@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "AutoMapper": "6.1.1",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.1.2",
+    "NETStandard.Library": "1.6.1",
+    "WaterAMR.Business.Interfaces": "1.0.0-*",
+    "WaterAMR.BusinessModels": "1.0.0-*",
+    "WaterAMR.DataAccess.Interfaces": "1.0.0-*",
+    "WaterAMR.Utility": "1.0.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}

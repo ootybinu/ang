@@ -1,0 +1,67 @@
+<app-title  title="OEM Configuration"></app-title>
+<div>
+	<div>
+		<ngb-alert *ngIf="alertMessage" [type]= "alertType" [dismissible]="true" (close)="alertMessage = null">
+			{{alertMessage}}
+		</ngb-alert>
+	</div>
+
+	<div *ngIf="!showDetailPanel" class="newPanel">
+		<button (click)="showDetail_click(true)" class="btn btn-primary">Add New OEM</button>
+	</div>
+	
+	<div *ngIf="showDetailPanel" class="detailPanel">
+		<form #detailForm="ngForm">
+			<div class="container row">
+				
+				<div class="subhead" *ngIf="addNew">
+					New OEM
+				</div>
+				<div class="subhead" *ngIf="!addNew">
+					Update OEM
+				</div>
+				<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+					<label> Code <span class="req">*</span></label>
+					<input type="text" name="code" [(ngModel)]="currentOem.code" #code="ngModel" required style="width:10em;" [disabled] ="!addNew">
+					<div *ngIf="code.errors && (code.dirty || code.touched)" class="alert alert-danger"> Code Required</div>
+				</div>
+
+				<div class="detailItem col-xs-10 col-sm-6 col-md-6 col-lg-6" >
+					<label > Description  <span class="req">*</span></label>
+					<input type="text" name="description" [(ngModel)]="currentOem.description" #description="ngModel" required placeholder="Description" >
+					<div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger"> Description  Required</div>
+				</div>
+				<div class="actionBar">
+					<button (click)="save()" class="btn btn-primary " [disabled]="!detailForm.form.valid">Save</button>
+					<button (click)=" showDetailPanel=false; selectedRowId =undefined;" class="btn btn-primary">Cancel</button>
+				</div>
+	
+			</div>
+		</form>	
+	</div>	
+
+	<div>
+		<div *ngIf="oemRows== undefined || oemRows.length == 0">
+					No Data found
+		</div>
+		<div *ngIf="oemRows != undefined && oemRows.length >0 ">
+			
+				<table class="table table-responsive col-md-12 mytable">
+					<tr >
+						<th style="width:30%">Code</th> 
+						<th style="width:30%">Description</th>
+						<th > Edit</th>
+					</tr>
+					<tr *ngFor="let rdata of oemRows"  [class]="rdata.code == selectedRowId ?'selected':'normal'">
+						<td> {{rdata.code}}</td>
+						<td> {{rdata.description}}</td>
+						<td> <span (click)="edit(rdata)" class="fa fa-edit"></span> </td>
+					</tr>
+				</table>
+
+			<app-pagination [totalPages]="totalpages" (pageChange)="pageChanged($event)" >
+			</app-pagination>
+		</div>
+	</div>
+
+</div>

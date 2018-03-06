@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15DFF4DC-4A0E-488D-9529-D5213020FE9C}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.API", "src\WaterAMR.API\WaterAMR.API.xproj", "{85C4B7F9-0989-40BA-8F6A-C95C30962BB7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.BusinessModels", "src\WaterAMR.BusinessModels\WaterAMR.BusinessModels.xproj", "{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.DataModels", "src\WaterAMR.DataModels\WaterAMR.DataModels.xproj", "{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.DataRepository", "src\WaterAMR.DataRepository\WaterAMR.DataRepository.xproj", "{D1193791-544F-4E5B-AC77-F39D07499680}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.Utility", "src\WaterAMR.Utility\WaterAMR.Utility.xproj", "{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.DataAccess", "src\WaterAMR.DataAccess\WaterAMR.DataAccess.xproj", "{97F8A516-CC1C-460A-A076-EFD9FF60CBBD}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.DataAccess.Interfaces", "src\WaterAMR.DataAccess.Interfaces\WaterAMR.DataAccess.Interfaces.xproj", "{BA8DE8BD-BDFF-414F-96AC-B716523500FB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.Business.Interfaces", "src\WaterAMR.Business.Interfaces\WaterAMR.Business.Interfaces.xproj", "{EF6CA365-1EEC-450C-A8F3-CBDF043D234A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WaterAMR.Business", "src\WaterAMR.Business\WaterAMR.Business.xproj", "{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85C4B7F9-0989-40BA-8F6A-C95C30962BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C4B7F9-0989-40BA-8F6A-C95C30962BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C4B7F9-0989-40BA-8F6A-C95C30962BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C4B7F9-0989-40BA-8F6A-C95C30962BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1193791-544F-4E5B-AC77-F39D07499680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1193791-544F-4E5B-AC77-F39D07499680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1193791-544F-4E5B-AC77-F39D07499680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1193791-544F-4E5B-AC77-F39D07499680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F8A516-CC1C-460A-A076-EFD9FF60CBBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F8A516-CC1C-460A-A076-EFD9FF60CBBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F8A516-CC1C-460A-A076-EFD9FF60CBBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F8A516-CC1C-460A-A076-EFD9FF60CBBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8DE8BD-BDFF-414F-96AC-B716523500FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8DE8BD-BDFF-414F-96AC-B716523500FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8DE8BD-BDFF-414F-96AC-B716523500FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8DE8BD-BDFF-414F-96AC-B716523500FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6CA365-1EEC-450C-A8F3-CBDF043D234A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6CA365-1EEC-450C-A8F3-CBDF043D234A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6CA365-1EEC-450C-A8F3-CBDF043D234A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6CA365-1EEC-450C-A8F3-CBDF043D234A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85C4B7F9-0989-40BA-8F6A-C95C30962BB7} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{6B267EA9-CF68-40DA-95D8-C659CEFF4D2A} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{2F51C2C2-CEFF-47F7-84AF-A18EF6429D58} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{D1193791-544F-4E5B-AC77-F39D07499680} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{365CAE8A-96FC-4E6E-A342-7B2EE2A59A5A} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{97F8A516-CC1C-460A-A076-EFD9FF60CBBD} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{BA8DE8BD-BDFF-414F-96AC-B716523500FB} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{EF6CA365-1EEC-450C-A8F3-CBDF043D234A} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+		{E7EACF3C-5C64-4FD2-9D9C-FD49B5676FEE} = {7EF3470D-1C8A-4D0B-BC99-E5BE3C53FD42}
+	EndGlobalSection
+EndGlobal

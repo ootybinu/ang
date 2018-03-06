@@ -1,0 +1,128 @@
+<app-title  title="Generate Bill Group"></app-title>
+
+<div style="display:inline-flex;" class="col-sm-12 col-md-12 mytable1 panel" >
+		<div *ngIf="divisions != undefined">
+			<label> Division  </label>
+			<select [(ngModel)]="selectedDivision" (change)="placeChange($event, 2)">
+				<option value="">--All-- </option>
+				<option *ngFor="let item of divisions" [value]="item.key">{{item.value}}</option>
+			</select>
+		</div>
+		
+<!-- 		<div *ngIf="subDivisions != undefined">
+			<label> Sub Division  </label>
+			<select [(ngModel)]="selectedSubDivision" (change)="placeChange($event, 4)">
+				<option value="">--All-- </option>
+				<option *ngFor="let item of subDivisions" [value]="item.key">{{item.value}}</option>
+			</select>
+		</div> -->
+<!-- 
+		<div *ngIf="billingTypes != undefined">
+			<label> Category  </label>
+			<select [(ngModel)]="selectedBillingType" >
+				<option value="">--All-- </option>
+				<option *ngFor="let item of billingTypes" [value]="item.key">{{item.value}}</option>
+			</select>
+		</div> -->
+<!-- 		<div *ngIf="billGroups != undefined">
+			<label> Group  </label>
+			<select [(ngModel)]="selectedBillGroup" >
+				<option *ngFor="let item of billGroups" [value]="item.key">{{item.value}}</option>
+			</select>
+		</div> -->
+		<div>
+			<span>Month</span>
+			<select [(ngModel)]="selMonth">
+				<option *ngFor="let item of months; let idx=index " [value]="idx+1">{{item}}</option>
+			</select>
+			<span>Year</span>
+			<input type="number" [(ngModel)]="selYear"  required />
+		</div>
+
+	<div>
+		<button class="btn btn-primary" (click)="getBGDetails()"> Fetch Groups</button>
+<!-- 		<span *ngIf="bgRows != undefined && bgRows.length >0">
+			<button class="btn btn-primary" (click)="addBG()"> Generate Bills </button>
+		</span> -->
+	</div>
+</div>
+
+<!--
+<div>
+	
+	<span>Month</span>
+	<select [(ngModel)]="selMonth">
+		<option *ngFor="let item of months; let idx=index " [value]="idx+1">{{item}}</option>
+	</select>
+	<span>Year</span>
+	<input type="number" [(ngModel)]="selYear"  required />
+
+	<span>Bill Date </span>
+	<input type="date" [(ngModel)]="billDate" required />
+
+	<span>Due Date </span>
+	<input type="date" [(ngModel)]="dueDate" required/>
+
+
+	<button class="btn btn-primary" (click)="getBGDetails()"> Fetch Groups</button>
+	<button class="btn btn-primary" (click)="generate()"> Generate Bill Group</button>
+</div>
+-->
+<div *ngIf="showEdit" class="panel">
+	<table>
+		<tr>
+			<td> bill Group </td><td> {{editRow.groupCode }} </td>
+			<td> Month Year </td><td> {{editRow.startDate |date :'dd-MM-yyyy'}}</td>
+
+		</tr>
+		<tr>
+			<td> Start </td><td> {{editRow.startDate |date :'dd-MM-yyyy'}}</td>
+			<td> End </td><td> {{editRow.endDate |date :'dd-MM-yyyy'}}</td>
+			
+		</tr>
+		<tr>
+			<td> Bill Date </td><td> <input type="date" [ngModel]="editRow.billDate |date :'yyyy-MM-dd'" (ngModelChange)="editRow.billDate= $event"/> </td>
+			<td> Due Date  </td><td> <input type="date" [ngModel]="editRow.dueDate |date :'yyyy-MM-dd'" (ngModelChange)="editRow.dueDate= $event"/></td>
+			
+		</tr>
+		<tr><td colspan="2">
+			<div class="actionBar">
+				<button (click)="update()" class="btn btn-primary ">Save</button>
+				<button (click)="showEdit = false; selectedRowId=undefined;" class="btn btn-primary">Cancel</button>
+			</div>
+		</td>
+</tr>
+	</table>
+	
+</div>
+
+
+<div>
+	<div *ngIf="bgRows != undefined && bgRows.length >0 ">
+		<table class="table table-responsive col-md-12 mytable">
+			<tr >
+				<th style="width:20%">Bill Group </th>
+				<th style="width:20%">Month -Year </th>
+				<th style="width:10%">Start </th>
+				<th style="width:10%">End</th>
+				<th style="width:20%">Bill Date</th>
+				<th style="width:20%">Due Date  </th>
+				<th style="width:20%">Status</th>
+				<th style="width:8%">Detail</th>
+
+			</tr>
+			<tr *ngFor="let rdata of bgRows" [class]="rdata.id == selectedRowId ?'selected':'normal'">
+				<td> {{rdata.groupCode }}</td>
+				<td> {{rdata.billMonth }}-{{rdata.billYear}}</td>
+
+				<td> {{rdata.startDate |date :'dd-MM-yyyy'}}</td>
+				<td> {{rdata.endDate |date :'dd-MM-yyyy'}}</td>
+				<td> {{rdata.billDate |date :'dd-MM-yyyy'}}</td>
+				<td> {{rdata.dueDate|date :'dd-MM-yyyy'}}</td>
+	  			<td> {{rdata.status}}</td>
+	  			<td> <span (click)="edit(rdata)" class="fa fa-edit"></span> </td>
+
+			</tr>
+		</table>
+	</div>
+</div>

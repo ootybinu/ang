@@ -1,0 +1,7 @@
+@import '~mainvar.scss';
+.title { display:flex;
+	/*background-color: $mainbarColor;*/
+	margin-bottom: .5rem;
+}
+.title img {height:45px;width:45px ; display:none;}
+h4 {margin-top:.5rem; font-size: 1.2rem;}

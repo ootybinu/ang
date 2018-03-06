@@ -1,0 +1,44 @@
+<div>
+	<div>
+		<span>Bill No </span><input type="number" name="txtBillNo" [(ngModel)]="billNumber">
+		<button class="btn btn-primary" (click)="getBill()"> Find</button>
+		<button class="btn btn-primary" (click)="clear()"> clear</button>
+	</div>	
+
+	<div *ngIf="selectedBill != undefined && selectedBill != null">
+		<app-billdetail [data]=selectedBill> </app-billdetail>
+			<div *ngIf="paymentvm != undefined && paymentvm != null && paymentvm.payments.length >0 ">
+				<table class="table">
+					<tr>
+						<th>Date</th>
+						<th>Mode of Pay </th>
+						<th>Cheque/DD No.</th>
+						<th>Bank Name</th>
+						<th>Amount Paid</th>
+						<th *ngIf="ShowCancel"> Cancel</th>
+					</tr>
+					<tr *ngFor="let pd of paymentvm.payments" >
+						<td [ngClass]="pd.canceled ? 'canceled':'normal'" >{{pd.addedAt |date }} </td>
+						<td [ngClass]="pd.canceled ? 'canceled':'normal'"> {{pd.ModeOfPay}}</td>
+						<td [ngClass]="pd.canceled ? 'canceled':'normal'">{{pd.chequeNo}} </td>
+						<td [ngClass]="pd.canceled ? 'canceled':'normal'">{{pd.bankName}} </td>
+						
+						<td [ngClass]="pd.canceled ? 'canceled':'normal'">{{pd.amount}} </td>
+
+						<td *ngIf="ShowCancel"> 
+						    <div *ngIf="!pd.canceled">
+							<button (click)="cancelPayment(pd.id)" [disabled]="billStatus=='Closed'"> Cancel </button></div>
+							<div *ngIf="pd.canceled">
+								Canceled on {{pd.canceledAt |date}}
+							</div>
+						</td>
+
+					</tr>
+				</table>
+				<div>Total Amount Paid : {{paymentvm.totalAmount}}</div>
+			</div>
+		<div *ngIf="billStatus == 'Closed'" class="rb">
+			This Bill Cycle is already closed for Payment/Cancellation.
+		</div>	
+	</div>		
+</div>

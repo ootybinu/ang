@@ -1,0 +1,24 @@
+﻿{
+  "ConnectionStrings": {
+    "ConnectionString": "Host=192.168.1.93;Username=postgres;Password=postgres;Database=paew_db",
+    "ProviderName": "Npgsql"
+  },
+  "Authentication": {
+    "Required": true, 
+    "SessionTimeOut": 20
+  },
+  "Dummy": {
+    "con1": "Database=BWSSB_AMR_Dev;Server=192.168.1.20\\mpusmis;User ID=devdotnet;Password=devdotnet",
+    "provider": "System.Data.SqlClient",
+    "con2": "Host=192.168.1.93;Username=postgres;Password=postgres;Database=mig2",
+    "provider2": "Npgsql"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  }
+}

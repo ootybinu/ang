@@ -1,0 +1,68 @@
+<app-title  title="OEM Analysis"></app-title>
+
+<div>
+	<div *ngIf=" oemRows != undefined && oemRows.length > 0" class = "container row">
+		<div class="col-sm-12 col-md-6 col-lg-6" >
+			<table class="table table-hover table-responsive col-md-12 mytable">
+			<tr>
+				<th style="width: 25%">OEM Name</th>
+				<th style="width: 25%">Efficiency </th>
+				<th style="width: 25%">OEM Code</th>
+				<th style="width: 25%">Detail</th>
+			</tr>
+			<tr *ngFor="let row of oemRows">
+				<td> {{row.oemname}}</td>
+				<td> {{row.effiency |number :'1.2-2'}}</td>
+				<td> {{row.oem}}</td>
+				<td> <span (click)="getDetail(row)" class="fa fa-edit"></span> </td>
+			</tr>
+
+			</table>
+
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6" >
+			<select [(ngModel)]="graphtype">
+				<option value="verticalbar">Bar</option>
+					<option value="line">Line</option>
+					<option value="area">Area</option>
+					<option value="pie">Pie</option>
+				</select>
+			<app-chart [data]="graphData" [chartType]="graphtype" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" ></app-chart>
+		</div>
+
+
+	</div>
+
+	<div *ngIf="showDetail">
+		<div *ngIf="oemEffRows !=undefined && oemEffRows.length > 0 ">
+		<h6>{{selectedOEM}}</h6>
+		<div class="detailWindow">
+			<table class="table table-hover table-responsive mytable">
+			<tr>
+				<th style="width: 20%">Unit Id</th>
+				<th style="width: 20%">Install On </th>
+				<th style="width: 20%">No. of Days worked </th>
+				<th style="width: 20%">Total Days </th>
+				<th style="width: 20%">Efficiency </th>
+			</tr>
+			<tr *ngFor="let row of oemEffRows">
+				<td> {{row.unitid}}</td>
+				<td> {{row.installon |date :'dd-MM-yyyy'}}</td>
+				<td> {{row.daysworked}}</td>
+				<td> {{row.totaldays}}</td>
+				<td> {{row.efficiency |number :'1.2-2' }}</td>
+			</tr>
+			</table>
+			</div>
+			<div class="actionBar">
+				<button (click)=" showDetail=false;" class="btn btn-primary">Close</button>
+			</div>
+		</div>
+		
+	</div>
+	<div>
+		<!-- Search panel -->
+	</div>
+
+
+</div>

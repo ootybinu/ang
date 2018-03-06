@@ -1,0 +1,574 @@
+	<app-title  title="Unit Configuration"></app-title>
+<div>
+<div>
+	<ngb-alert *ngIf="alertMessage" [type]= "alertType" [dismissible]="true" (close)="alertMessage = null">
+		{{alertMessage}}
+	</ngb-alert>
+</div>
+	<div *ngIf="!showDetailPanel" class="newPanel">
+		<button (click)="showDetail_click(true)" class="btn btn-primary">Add New Unit</button>
+	</div>
+	<div *ngIf="showDetailPanel" class="detailPanel">
+		<form #detailForm="ngForm">
+			<div style="display:inline-block;width:100%" >
+				<div style="display:block;width: 100%">
+				<div class="tabs">
+				    
+				   <div class="tab">
+				       <input type="radio" id="tab-1" name="tab-group-1" checked>
+				       <label for="tab-1">Unit Details</label>
+				       
+				       <div class="content container row">
+					       <div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Unit Id <span class="req">*</span></label>
+								<input type="text" name="unitid" [(ngModel)]="currentUnit.unitid" #unitid="ngModel" required style="width:8em;" [disabled] ="!addnew">
+								<div *ngIf="unitid.errors && (unitid.dirty || unitid.touched)" class="alert alert-danger"> UnitId Required</div>
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Meter Sl No. <span class="req">*</span></label>
+								<input type="text" name="meterslno" [(ngModel)]="currentUnit.meterslno" #meterslno="ngModel" required  style="width:8em;">
+								<div *ngIf="meterslno.errors && (meterslno.dirty || meterslno.touched)" class="alert alert-danger"> Meter SL No. Required</div>
+							</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> OEM Name <span class="req">*</span></label>
+								<select [(ngModel)]="currentUnit.oemname" name="oemname"  #oemname="ngModel" required>
+									<option *ngFor="let item of selectionLists.OEMNames" [value]="item.key">{{item.value}}</option>
+								</select>
+							 	<div *ngIf="oemname.errors && (oemname.dirty || oemname.touched)" class="alert alert-danger"> OEM Required</div> 
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Meter Type <span class="req">*</span></label>
+								<select [(ngModel)]="currentUnit.metertype" name="metertype"  #metertype="ngModel" required>
+									<option *ngFor="let item of selectionLists.MeterTypes" [value]="item.key">{{item.value}}</option>
+								</select>
+							 	<div *ngIf="metertype.errors && (metertype.dirty || metertype.touched)" class="alert alert-danger"> Meter Type  Required</div> 
+						 	</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Date of Installation <span class="req">*</span> </label>
+								<input type="date" name="installon" [(ngModel)]="currentUnit.installon" #installon="ngModel" required>
+								<div *ngIf="installon.errors && (installon.dirty || installon.touched)" class="alert alert-danger"> installation Date Required</div>
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label > Flow Type <span class="req">*</span> </label>
+								<select [(ngModel)]="currentUnit.meterflowtype" name="meterflowtype"  #meterflowtype="ngModel" required style="width:48%;">
+									<option *ngFor="let item of selectionLists.FlowTypes" [value]="item.key">{{item.value}}</option>
+								</select>
+							 	<div *ngIf="meterflowtype.errors && (meterflowtype.dirty || meterflowtype.touched)" class="alert alert-danger"> Meter Flow Type  Required</div> 
+						 	</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label > Meter Billing Type <span class="req">*</span> </label>
+								<select [(ngModel)]="currentUnit.meterbillingtype" name="meterbillingtype"  #meterbillingtype="ngModel" required>
+									<option *ngFor="let item of selectionLists.MeterBillingTypes" [value]="item.key">{{item.value}}</option>
+								</select>
+							 	<div *ngIf="meterbillingtype.errors && (meterbillingtype.dirty || meterbillingtype.touched)" class="alert alert-danger"> Meter Billing  Type  Required</div> 
+						 	</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Mode of Communication  <span class="req">*</span></label>
+								<select [(ngModel)]="currentUnit.modeofcommuniction" name="modeofcommuniction"  #modeofcommuniction="ngModel" required>
+									<option *ngFor="let item of selectionLists.CommModes" [value]="item.key">{{item.value}}</option>
+								</select>
+								<div *ngIf="modeofcommuniction.errors && (modeofcommuniction.dirty || modeofcommuniction.touched)" class="alert alert-danger"> Communication Mode Required</div> 
+						 	</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Period of Communication <span class="req">*</span></label>
+									<input type="text" name="communicationperiod" placeholder="in minutes" [(ngModel)]="currentUnit.communicationperiod" #communicationperiod="ngModel" style="width:4em;" >
+									<div *ngIf="communicationperiod.errors && (communicationperiod.dirty || communicationperiod.touched)" class="alert alert-danger"> Communication Mode Required</div> 
+								</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Bore size <span class="req">*</span></label>
+								<input type="text" name="pipesizenew" placeholder="in millimeters" [(ngModel)]="currentUnit.pipesizenew" #pipesizenew="ngModel" required style="width:6em;">
+								<div *ngIf="pipesizenew.errors && (pipesizenew.dirty || pipesizenew.touched)" class="alert alert-danger"> Bore Size Required</div>
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Meter Calibration factor <span class="req">*</span></label>
+								<input type="text" name="metercalibfactor" [(ngModel)]="currentUnit.metercalibfactor" #metercalibfactor="ngModel" required  style="width:6em;"> 
+								<div *ngIf="metercalibfactor.errors && (metercalibfactor.dirty || metercalibfactor.touched)" class="alert alert-danger"> Meter Calibration  Required</div>
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Meter calibration date <span class="req">*</span></label>
+								<input type="date" name="metercalibrationdate" [(ngModel)]="currentUnit.metercalibrationdate" #metercalibrationdate="ngModel" required>
+								<div *ngIf="metercalibrationdate.errors && (metercalibrationdate.dirty || metercalibrationdate.touched)" class="alert alert-danger"> Meter Calibration Date Required</div>
+							</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Initial Meter Reading <span class="req">*</span></label>
+								<input type="text" name="initialmeterreading" [(ngModel)]="currentUnit.initialmeterreading" #initialmeterreading="ngModel" required  style="width:6em;">
+								<div *ngIf="initialmeterreading.errors && (initialmeterreading.dirty || initialmeterreading.touched)" class="alert alert-danger"> Initial meter reading Required</div>
+							</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Litre per pulse <span class="req">*</span> </label>
+								<input type="text" name="ltrperpulse" [(ngModel)]="currentUnit.ltrperpulse" #ltrperpulse="ngModel" required  style="width:4em;">
+								<div *ngIf="ltrperpulse.errors && (ltrperpulse.dirty || ltrperpulse.touched)" class="alert alert-danger"> Litre per pulseRequired</div>
+							</div>	
+
+				       </div> 
+				   </div>
+				    
+				   <div class="tab">
+				       <input type="radio" id="tab-2" name="tab-group-1">
+				       <label for="tab-2">Location</label>
+				       
+				       <div class="content containter row ">
+
+
+				       		<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Division <span class="req">*</span> </label>
+								<select [(ngModel)]="currentUnit.divisionid" name="divisionid" (change)="placeChange($event, 2)" #divisionid="ngModel" required="">
+								 	<option disabled selected hidden value=""> -- select an option -- </option>
+									<option *ngFor="let item of selectionLists.Divisions" [value]="item.key">{{item.value}}</option>
+								</select>
+								<div *ngIf="divisionid.errors && (divisionid.dirty || divisionid.touched)" class="alert alert-danger">Division Required</div> 
+						</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<label> Sub Division  <span class="req">*</span></label>
+								<select [(ngModel)]="currentUnit.subdivisionid" name="subdivisionid" (change)="placeChange($event,4)" #subdivisionid="ngModel" required="">
+								    <option disabled selected hidden value=""> -- select an option -- </option>
+									<option *ngFor="let item of selectionLists.SubDivisions" [value]="item.key">{{item.value}}</option>
+								</select>
+								<div *ngIf="subdivisionid.errors && (subdivisionid.dirty || subdivisionid.touched)" class="alert alert-danger"> Sub Division Required</div> 
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<label> Service Division <span class="req">*</span> </label>
+								<select [(ngModel)]="currentUnit.servicestnid" name="servicestnid" (change)="placeChange($event,3)" #servicestnid="ngModel" required="">
+								 	<option disabled selected hidden value=""> -- select an option -- </option>
+									<option *ngFor="let item of selectionLists.ServiceStations" [value]="item.key">{{item.value}}</option>
+								</select>
+								<div *ngIf="servicestnid.errors && (servicestnid.dirty || servicestnid.touched)" class="alert alert-danger"> Service Station  Required</div> 
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4">
+								<label> Location <span class="req">*</span> </label>
+								<select [(ngModel)]="currentUnit.locationid" name="locationid"  #locationid="ngModel" required="">
+									<option disabled selected hidden value=""> -- select an option -- </option>
+									<option *ngFor="let item of selectionLists.Locations" [value]="item.key">{{item.value}}</option>
+								</select>
+								<div *ngIf="locationid.errors && (locationid.dirty || locationid.touched)" class="alert alert-danger"> Location  Required</div> 
+							</div>
+
+				           
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Bill Group <span class="req">*</span> </label>
+									<select [(ngModel)]="currentUnit.billgroupid" name="billgroupid"  #billgroupid="ngModel" required="">
+									 	<option disabled selected hidden value=""> -- select an option -- </option>
+										<option *ngFor="let item of selectionLists.BillGroups" [value]="item.key">{{item.value}}</option>
+									</select>
+									<div *ngIf="billgroupid.errors && (billgroupid.dirty || billgroupid.touched)" class="alert alert-danger">Bill Group Required</div> 
+							</div>	
+
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Unit Mobile Number <span class="req">*</span></label>
+								<input type="text" name="mobilenumberofunit" [(ngModel)]="currentUnit.mobilenumberofunit" #mobilenumberofunit="ngModel" required  style="width:48%;">
+								<div *ngIf="mobilenumberofunit.errors && (mobilenumberofunit.dirty || mobilenumberofunit.touched)" class="alert alert-danger">unit Mobile Number Required</div>
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Division Head </label>
+								<select [(ngModel)]="currentUnit.divisionhead" name="divisionhead"  #divisionhead="ngModel" >
+									<option *ngFor="let item of selectionLists.DivisionHeads" [value]="item.key">{{item.value}}</option>
+								</select>
+						 	</div>
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> SubDivision Head </label>
+								<select [(ngModel)]="currentUnit.subdivisionhead" name="subdivisionhead"  #subdivisionhead="ngModel" >
+									<option *ngFor="let item of selectionLists.SubDivisionHeads" [value]="item.key">{{item.value}}</option>
+								</select>
+						 	</div>	
+
+						 	<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> GSM Signal Strength </label>
+								<input type="text" name="gsmsignalstrength" [(ngModel)]="currentUnit.gsmsignalstrength" #gsmsignalstrength="ngModel"  style="width:48%;" >
+							</div>
+
+						 	<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label>Meter Coordinates </label>
+								<input type="number" name="latitude"  placeholder="Latitude" [(ngModel)]="currentUnit.latitude" #latitude="ngModel" style="width:48%" >
+								<input type="number" name="longitude" placeholder="longitude" [(ngModel)]="currentUnit.longitude" #longitude="ngModel" style="width:48%">
+							</div>
+							
+						 	<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Model No. </label>
+								<input type="text" name="metermodelnumber" [(ngModel)]="currentUnit.metermodelnumber" #metermodelnumber="ngModel"  style="width:48%;" >
+							</div>
+
+							<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+								<label> Service provider </label>
+								<select [(ngModel)]="currentUnit.serviceprovider" name="serviceprovider"  #serviceprovider="ngModel" >
+									<option *ngFor="let item of selectionLists.MobileServiceProviders" [value]="item.key">{{item.value}}</option>
+								</select>
+						 	</div>
+
+				       </div> 
+				   </div>
+				    
+				    <div class="tab">
+				       <input type="radio" id="tab-3" name="tab-group-1">
+				       <label for="tab-3">Flow Details</label>
+				     
+				       <div class="content container row">
+						        <div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Consumer Name  </label>
+									<select [(ngModel)]="currentUnit.consumerid" name="consumerid"  #consumerid="ngModel" >
+										<option *ngFor="let item of selectionLists.ConsumerNames" [value]="item.key">{{item.value}}</option>
+									</select>
+							 	</div>	
+								<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Address</label>
+									<input type="text" name="consumeraddress"  [(ngModel)]="currentUnit.consumeraddress" #consumeraddress="ngModel" style="width:48%;" >
+								</div>
+								<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label>Contact Number</label>
+									<input type="text" name="consumercontactnumber"  [(ngModel)]="currentUnit.consumercontactnumber" #consumercontactnumber="ngModel"  style="width:8em;" >
+								</div>
+
+							 	<div class="detailItem col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+									<label style="width: 25%"> Days of Water flow</label>
+									<ul style="width:74%">
+									<li  *ngFor="let item of selectionLists.WeekNames;let i = index">
+										<input type="checkbox" [checked]="currentUnit.daysofwaterflow.split(',')[i]=='True'" name="item{{i}}" (click)="dayClick(i)">{{item}}
+									</li>
+									</ul>
+							 	</div>
+
+							 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+									<label style="25%">Time of Waterflow </label>
+									<div >
+										<label>From </label>
+										 <input type="Time" name="fromwaterflow"  placeholder="From" [(ngModel)]="currentUnit.fromwaterflow" #fromwaterflow="ngModel" >
+										<label>To</label>
+										 <input type="Time" name="towaterflow" placeholder="To" [(ngModel)]="currentUnit.towaterflow" #towaterflow="ngModel" >
+									</div>
+								</div>
+
+								<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Approximate Average Flow(Ltr)</label>
+									<input type="number" name="averageflow" [(ngModel)]="currentUnit.averageflow" #averageflow="ngModel"  style="width:6em;">
+								</div>
+								<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Approx Pressure</label>
+									<input type="number" name="averagepressure" [(ngModel)]="currentUnit.averagepressure" #averagepressure="ngModel"  style="width:6em;" >
+								</div>
+								<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+									<label> Approximate Flow Rate</label>
+									<input type="number" name="averageflowrate" [(ngModel)]="currentUnit.averageflowrate" #averageflowrate="ngModel" style="width:6em;" >
+								</div>
+													<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+							<label> Pipe size </label>
+							<input type="text" name="pipesize" placeholder="in millimeters" [(ngModel)]="currentUnit.pipesize" #pipesize="ngModel"  style="width:6em;">
+						</div>
+
+						<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+							<label> Battery limit</label>
+							<input type="text" name="batterylimitvalue" placeholder="in volts" [(ngModel)]="currentUnit.batterylimitvalue" #batterylimitvalue="ngModel"  style="width:4em;" >
+						</div>
+						<div class="detailItem col-xs-12 col-sm-6 col-md-4 col-lg-4" >
+							<label> Active </label>
+							<input type="checkbox" name="active" [(ngModel)]="currentUnit.active" #active="ngModel" >
+						</div>
+
+
+				       </div> 
+				   </div>
+				    
+				</div>
+			</div>
+
+			<div class="actionBar" style="width:100%">
+				<button (click)="save(); selectedRowId=undefined; " class="btn btn-primary " [disabled]="!detailForm.form.valid">Save</button>
+				<button (click)="showDetail_click(false); selectedRowId=undefined;" class="btn btn-primary ">Cancel</button>
+			</div>
+			</div>
+
+			<div class="container row">
+				<!-- 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Unit Id <span class="req">*</span></label>
+						<input type="text" name="unitid" [(ngModel)]="currentUnit.unitid" #unitid="ngModel" required style="width:8em;" [disabled] ="!addnew">
+						<div *ngIf="unitid.errors && (unitid.dirty || unitid.touched)" class="alert alert-danger"> UnitId Required</div>
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Meter Sl No. <span class="req">*</span></label>
+						<input type="text" name="meterslno" [(ngModel)]="currentUnit.meterslno" #meterslno="ngModel" required  style="width:8em;">
+						<div *ngIf="meterslno.errors && (meterslno.dirty || meterslno.touched)" class="alert alert-danger"> Meter SL No. Required</div>
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> OEM Name <span class="req">*</span></label>
+						<select [(ngModel)]="currentUnit.oemname" name="oemname"  #oemname="ngModel" required>
+							<option *ngFor="let item of selectionLists.OEMNames" [value]="item.key">{{item.value}}</option>
+						</select>
+					 	<div *ngIf="oemname.errors && (oemname.dirty || oemname.touched)" class="alert alert-danger"> OEM Required</div> 
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Meter Type <span class="req">*</span></label>
+						<select [(ngModel)]="currentUnit.metertype" name="metertype"  #metertype="ngModel" required>
+							<option *ngFor="let item of selectionLists.MeterTypes" [value]="item.key">{{item.value}}</option>
+						</select>
+					 	<div *ngIf="metertype.errors && (metertype.dirty || metertype.touched)" class="alert alert-danger"> Meter Type  Required</div> 
+				 	</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Date of Installation <span class="req">*</span> </label>
+						<input type="date" name="installon" [(ngModel)]="currentUnit.installon" #installon="ngModel" required>
+						<div *ngIf="installon.errors && (installon.dirty || installon.touched)" class="alert alert-danger"> installation Date Required</div>
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label > Flow Type <span class="req">*</span> </label>
+						<select [(ngModel)]="currentUnit.meterflowtype" name="meterflowtype"  #meterflowtype="ngModel" required style="width:48%;">
+							<option *ngFor="let item of selectionLists.FlowTypes" [value]="item.key">{{item.value}}</option>
+						</select>
+					 	<div *ngIf="meterflowtype.errors && (meterflowtype.dirty || meterflowtype.touched)" class="alert alert-danger"> Meter Flow Type  Required</div> 
+				 	</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label > Meter Billing Type <span class="req">*</span> </label>
+						<select [(ngModel)]="currentUnit.meterbillingtype" name="meterbillingtype"  #meterbillingtype="ngModel" required>
+							<option *ngFor="let item of selectionLists.MeterBillingTypes" [value]="item.key">{{item.value}}</option>
+						</select>
+					 	<div *ngIf="meterbillingtype.errors && (meterbillingtype.dirty || meterbillingtype.touched)" class="alert alert-danger"> Meter Billing  Type  Required</div> 
+				 	</div> 
+
+				 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> GSM Signal Strength </label>
+						<input type="text" name="gsmsignalstrength" [(ngModel)]="currentUnit.gsmsignalstrength" #gsmsignalstrength="ngModel"  style="width:6em;" >
+					</div>
+
+				 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label>Meter Coordinates </label>
+						<input type="number" name="latitude"  placeholder="Latitude" [(ngModel)]="currentUnit.latitude" #latitude="ngModel" style="width:4em" >
+						<input type="number" name="longitude" placeholder="longitude" [(ngModel)]="currentUnit.longitude" #longitude="ngModel" style="width:4em">
+					</div>
+					
+				 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Model No. </label>
+						<input type="text" name="metermodelnumber" [(ngModel)]="currentUnit.metermodelnumber" #metermodelnumber="ngModel"  style="width:8em;" >
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Service provider </label>
+						<select [(ngModel)]="currentUnit.serviceprovider" name="serviceprovider"  #serviceprovider="ngModel" >
+							<option *ngFor="let item of selectionLists.MobileServiceProviders" [value]="item.key">{{item.value}}</option>
+						</select>
+				 	</div>
+
+				 	<div class="detailItem col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+						<label> Days of Water flow</label>
+						<ul>
+						<li  *ngFor="let item of selectionLists.WeekNames;let i = index">
+							<input type="checkbox" [checked]="currentUnit.daysofwaterflow.split(',')[i]=='True'" name="item{{i}}" (click)="dayClick(i)">{{item}}
+						</li>
+						</ul>
+				 	</div>
+
+				 	<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label >Time of Waterflow </label><div style="width:50%"></div>
+						<label>From </label>
+						 <input type="Time" name="fromwaterflow"  placeholder="From" [(ngModel)]="currentUnit.fromwaterflow" #fromwaterflow="ngModel" >
+						<label>To</label>
+						 <input type="Time" name="towaterflow" placeholder="To" [(ngModel)]="currentUnit.towaterflow" #towaterflow="ngModel" >
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Approximate Average Flow(Ltr)</label>
+						<input type="number" name="averageflow" [(ngModel)]="currentUnit.averageflow" #averageflow="ngModel"  style="width:6em;">
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Approx Pressure</label>
+						<input type="number" name="averagepressure" [(ngModel)]="currentUnit.averagepressure" #averagepressure="ngModel"  style="width:6em;" >
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Approximate Flow Rate</label>
+						<input type="number" name="averageflowrate" [(ngModel)]="currentUnit.averageflowrate" #averageflowrate="ngModel" style="width:6em;" >
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Mode of Communication  <span class="req">*</span></label>
+						<select [(ngModel)]="currentUnit.modeofcommuniction" name="modeofcommuniction"  #modeofcommuniction="ngModel" required>
+							<option *ngFor="let item of selectionLists.CommModes" [value]="item.key">{{item.value}}</option>
+						</select>
+						<div *ngIf="modeofcommuniction.errors && (modeofcommuniction.dirty || modeofcommuniction.touched)" class="alert alert-danger"> Communication Mode Required</div> 
+				 	</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Period of Communication <span class="req">*</span></label>
+						<input type="text" name="communicationperiod" placeholder="in minutes" [(ngModel)]="currentUnit.communicationperiod" #communicationperiod="ngModel" style="width:4em;" >
+						<div *ngIf="communicationperiod.errors && (communicationperiod.dirty || communicationperiod.touched)" class="alert alert-danger"> Communication Mode Required</div> 
+
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Recharge Date </label>
+						<input type="date" name="rechargedate" [(ngModel)]="currentUnit.rechargedate" #rechargedate="ngModel" >
+					</div>			
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+							<label> Division <span class="req">*</span> </label>
+							<select [(ngModel)]="currentUnit.divisionid" name="divisionid" (change)="placeChange($event, 2)" #divisionid="ngModel" required="">
+							 	<option disabled selected hidden value=""> -- select an option -- </option>
+								<option *ngFor="let item of selectionLists.Divisions" [value]="item.key">{{item.value}}</option>
+							</select>
+							<div *ngIf="divisionid.errors && (divisionid.dirty || divisionid.touched)" class="alert alert-danger">Division Required</div> 
+					</div>
+
+						<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<label> Sub Division  <span class="req">*</span></label>
+							<select [(ngModel)]="currentUnit.subdivisionid" name="subdivisionid" (change)="placeChange($event,4)" #subdivisionid="ngModel" required="">
+							    <option disabled selected hidden value=""> -- select an option -- </option>
+								<option *ngFor="let item of selectionLists.SubDivisions" [value]="item.key">{{item.value}}</option>
+							</select>
+							<div *ngIf="subdivisionid.errors && (subdivisionid.dirty || subdivisionid.touched)" class="alert alert-danger"> Sub Division Required</div> 
+						</div>
+
+						<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<label> Service Division <span class="req">*</span> </label>
+							<select [(ngModel)]="currentUnit.servicestnid" name="servicestnid" (change)="placeChange($event,3)" #servicestnid="ngModel" required="">
+							 	<option disabled selected hidden value=""> -- select an option -- </option>
+								<option *ngFor="let item of selectionLists.ServiceStations" [value]="item.key">{{item.value}}</option>
+							</select>
+							<div *ngIf="servicestnid.errors && (servicestnid.dirty || servicestnid.touched)" class="alert alert-danger"> Service Station  Required</div> 
+						</div>
+
+						<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<label> Location <span class="req">*</span> </label>
+							<select [(ngModel)]="currentUnit.locationid" name="locationid"  #locationid="ngModel" required="">
+								<option disabled selected hidden value=""> -- select an option -- </option>
+								<option *ngFor="let item of selectionLists.Locations" [value]="item.key">{{item.value}}</option>
+							</select>
+							<div *ngIf="locationid.errors && (locationid.dirty || locationid.touched)" class="alert alert-danger"> Location  Required</div> 
+						</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Division Head </label>
+						<select [(ngModel)]="currentUnit.divisionhead" name="divisionhead"  #divisionhead="ngModel" >
+							<option *ngFor="let item of selectionLists.DivisionHeads" [value]="item.key">{{item.value}}</option>
+						</select>
+				 	</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> SubDivision Head </label>
+						<select [(ngModel)]="currentUnit.subdivisionhead" name="subdivisionhead"  #subdivisionhead="ngModel" >
+							<option *ngFor="let item of selectionLists.SubDivisionHeads" [value]="item.key">{{item.value}}</option>
+						</select>
+				 	</div>		 	
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Bore size <span class="req">*</span></label>
+						<input type="text" name="pipesizenew" placeholder="in millimeters" [(ngModel)]="currentUnit.pipesizenew" #pipesizenew="ngModel" required style="width:6em;">
+						<div *ngIf="pipesizenew.errors && (pipesizenew.dirty || pipesizenew.touched)" class="alert alert-danger"> Bore Size Required</div>
+					</div>
+				
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Pipe size </label>
+						<input type="text" name="pipesize" placeholder="in millimeters" [(ngModel)]="currentUnit.pipesize" #pipesize="ngModel"  style="width:6em;">
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Meter Calibration factor <span class="req">*</span></label>
+						<input type="text" name="metercalibfactor" [(ngModel)]="currentUnit.metercalibfactor" #metercalibfactor="ngModel" required  style="width:6em;"> 
+						<div *ngIf="metercalibfactor.errors && (metercalibfactor.dirty || metercalibfactor.touched)" class="alert alert-danger"> Meter Calibration  Required</div>
+					</div>
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Meter calibration date <span class="req">*</span></label>
+						<input type="date" name="metercalibrationdate" [(ngModel)]="currentUnit.metercalibrationdate" #metercalibrationdate="ngModel" required>
+						<div *ngIf="metercalibrationdate.errors && (metercalibrationdate.dirty || metercalibrationdate.touched)" class="alert alert-danger"> Meter Calibration Date Required</div>
+					</div>
+
+				
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Battery limit</label>
+						<input type="text" name="batterylimitvalue" placeholder="in volts" [(ngModel)]="currentUnit.batterylimitvalue" #batterylimitvalue="ngModel"  style="width:4em;" >
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Active </label>
+						<input type="checkbox" name="active" [(ngModel)]="currentUnit.active" #active="ngModel" >
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Initial Meter Reading <span class="req">*</span></label>
+						<input type="text" name="initialmeterreading" [(ngModel)]="currentUnit.initialmeterreading" #initialmeterreading="ngModel" required  style="width:6em;">
+						<div *ngIf="initialmeterreading.errors && (initialmeterreading.dirty || initialmeterreading.touched)" class="alert alert-danger"> Initial meter reading Required</div>
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Litre per pulse <span class="req">*</span> </label>
+						<input type="text" name="ltrperpulse" [(ngModel)]="currentUnit.ltrperpulse" #ltrperpulse="ngModel" required  style="width:4em;">
+						<div *ngIf="ltrperpulse.errors && (ltrperpulse.dirty || ltrperpulse.touched)" class="alert alert-danger"> Litre per pulseRequired</div>
+					</div>
+								
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Unit Mobile Number <span class="req">*</span></label>
+						<input type="text" name="mobilenumberofunit" [(ngModel)]="currentUnit.mobilenumberofunit" #mobilenumberofunit="ngModel" required  style="width:8em;">
+						<div *ngIf="mobilenumberofunit.errors && (mobilenumberofunit.dirty || mobilenumberofunit.touched)" class="alert alert-danger">unit Mobile Number Required</div>
+					</div>
+					
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Consumer Name  </label>
+						<select [(ngModel)]="currentUnit.consumerid" name="consumerid"  #consumerid="ngModel" >
+							<option *ngFor="let item of selectionLists.ConsumerNames" [value]="item.key">{{item.value}}</option>
+						</select>
+				 	</div>	
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label> Address</label>
+						<input type="text" name="consumeraddress"  [(ngModel)]="currentUnit.consumeraddress" #consumeraddress="ngModel" style="width:8em;" >
+					</div>
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+						<label>Contact Number</label>
+						<input type="text" name="consumercontactnumber"  [(ngModel)]="currentUnit.consumercontactnumber" #consumercontactnumber="ngModel"  style="width:8em;" >
+					</div>	
+
+					<div class="detailItem col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+							<label> Bill Group <span class="req">*</span> </label>
+							<select [(ngModel)]="currentUnit.billgroupid" name="billgroupid" (change)="placeChange($event, 2)" #billgroupid="ngModel" required="">
+							 	<option disabled selected hidden value=""> -- select an option -- </option>
+								<option *ngFor="let item of selectionLists.BillGroups" [value]="item.key">{{item.value}}</option>
+							</select>
+							<div *ngIf="billgroupid.errors && (billgroupid.dirty || billgroupid.touched)" class="alert alert-danger">Bill Group Required</div> 
+					</div>	-->	
+			</div>
+<!-- 			<div class="actionBar">
+				<button (click)="save()" class="btn btn-primary " [disabled]="!detailForm.form.valid">Save</button>
+				<button (click)="showDetail_click(false)" class="btn btn-primary ">Cancel</button>
+			</div> -->
+		</form>
+	</div>
+
+	<div *ngIf="unitSummaryRows== undefined || unitSummaryRows.length == 0">
+		No Data found
+	</div>
+	<div *ngIf="unitSummaryRows != undefined && unitSummaryRows.length >0 ">
+			<table class="table table-responsive col-md-12 mytable">
+			<tr>
+				<th style="width:8%">Unit ID</th>
+				<th style="width:10%">Division </th>
+				<th style="width:10%">Sub Division </th>
+				<th style="width:10%">Service Station</th>
+				<th style="width:16%">Location </th>
+				<th style="width:10%">Installed on</th>
+				<th style="width:8%">Bore size</th>
+				<th style="width:8%">Meter Calibration factor</th>
+				<th style="width:12%">Mobile Number</th>
+				<th style="width:8%">Detail</th>
+	
+			</tr>
+			<tr *ngFor="let rdata of unitSummaryRows" [class]="rdata.id == selectedRowId ?'selected':'normal'">
+<!-- 				<td> <input type="button" (click)="getDetail(rdata.id)" value="Detail" class="btn " ></td>
+ -->			<td> {{rdata.unitid}}</td>
+				<td> {{rdata.division}}</td>
+				<td> {{rdata.subdivision}}</td>
+				<td> {{rdata.servicestation}}</td>
+				<td> {{rdata.location}}</td>
+				<td> {{rdata.installon |date :'dd-MM-yyyy'}}</td>
+				<td> {{rdata.pipesize}}</td>
+				<td> {{rdata.metercalibfactor}}</td>
+				<td> {{rdata.mobilenumberofunit}}</td>
+				<td> <span (click)="getDetail(rdata.id)" class="fa fa-edit"></span> </td>
+				<!-- <td> <span (click)="getDetail(rdata.id)" class="fa fa-edit"></span> </td> -->
+			</tr>
+		</table>
+		<app-pagination [totalPages]="totalpages" (pageChange)="pageChanged($event)" >
+		</app-pagination>
+
+	</div>
+</div>

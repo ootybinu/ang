@@ -1,0 +1,41 @@
+<app-title  title="Unit Report"></app-title>
+<div class="tab-help">
+	<div class="table_helper">
+		<app-table-helper (ShowSearch)="showSearch()" [ShowChartIcon]="showChartIcon" [ShowExportIcon]="showExportIcon"></app-table-helper>
+	</div>
+</div>
+
+<div  [hidden]="!showSearchPanel" class="searchPanel">
+	<app-unitreport-search (onSelected)="selected($event)" (onSwitch)="switchPanel($event)"></app-unitreport-search>
+</div>
+<div>
+	<div *ngIf="unitreports== undefined || unitreports.length == 0">
+		No Data found
+	</div>
+	<div *ngIf="unitreports != undefined && unitreports.length > 0">
+		<table class="table table-hover table-responsive col-md-12 mytable">
+			<tr>
+				<th>Consumer</th>
+				<th>Location </th>
+				<th>Consumption </th>
+				<th>Day Consumption </th>
+				<th>Date Recorded </th>
+				<th>OEM </th>
+				<th>Unit Id </th>
+				<th>Battery volt</th>
+			</tr>
+			<tr *ngFor="let ur of unitreports">
+				<td> {{ur.consumer}}</td>
+				<td> {{ur.location}}</td>
+				<td> {{ur.consumptioninmcube}}</td>
+				<td> {{ur.dayConsumption}}</td>
+				<td> {{ur.dateRecorded | date :'shortDate'}}</td>
+				<td> {{ur.oemName}}</td>
+				<td> {{ur.unitId}}</td>
+				<td> {{ur.batteryVoltage}}</td>
+			</tr>
+		</table>
+		<app-pagination [totalPages]="totalpages" (pageChange)="pageChanged($event)" >
+		</app-pagination>
+	</div>
+</div>

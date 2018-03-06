@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs":true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  }, 
+      "files":[
+"src/app/modules/home/home.module.ts", 
+"src/app/modules/realtime/realtime.module.ts", 
+"src/app/modules/shared/shared.module.ts", 
+"src/app/modules/unitreport/unitreport.module.ts",
+"src/app/modules/gprsdata/gprsdata.module.ts",
+"src/app/modules/login/login.module.ts",
+"src/app/modules/revenue/revenue.module.ts",
+"src/app/modules/admin/unit/unit.module.ts",
+"src/app/modules/admin/user/user.module.ts",
+"src/app/modules/admin/role/role.module.ts",
+"src/app/modules/admin/organization/organization.module.ts",
+"src/app/modules/admin/oem/oem.module.ts",
+"src/app/modules/oem/oem.module.ts",
+"src/app/modules/tamperdetection/tamperdetection.module.ts",
+"src/app/modules/dashboard/dashboard.module.ts", 
+"src/app/modules/billing/billing.module.ts",
+"src/app/modules/tariff/tariff.module.ts",
+"src/app/modules/billgroup/billgroup.module.ts",
+"src/app/modules/payment/payment.module.ts"
+  ]
+
+}

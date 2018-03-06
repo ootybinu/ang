@@ -1,0 +1,31 @@
+<div class="maindiv">
+	<div *ngIf= "adminMenu != undefined && adminMenu.length >0 ">
+		<h6>Admin Tasks</h6>
+		<div class="appsPanel col-sm-10 col-md-9" >
+			<div *ngFor="let mi of adminMenu">
+				<div *ngIf="mi.show" class="appItem" (click)="viewpage(mi.path)" title="{{mi.message}}">
+					<div>
+						<img [src]="mi.icon" class="appImg"/>
+					 	<div>
+					 	{{mi.description}}</div>
+				 	</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf=" appMenu != undefined && appMenu.length >0 " >
+		<h6>Applications</h6>
+		<div  class="appsPanel col-sm-10 col-md-9">
+
+			<div *ngFor="let mi of appMenu">
+				<div *ngIf="mi.show" class="appItem" (click)="viewpage(mi.path)" title="{{mi.message}}">
+					<div>
+						<img [src]="mi.icon" class="appImg" />
+					 	<div>
+					 	{{mi.description}}</div>
+				 	</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+</div>

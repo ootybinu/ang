@@ -1,0 +1,116 @@
+
+<div *ngIf=" data != undefined && data.length >0 " style="background-color:white;border-radius:6px;">
+		<div *ngIf="chartType=='verticalbar'">
+			<ngx-charts-bar-vertical 
+			  [view]="view"  
+			  [scheme]="colorScheme" [results]="_data" 
+			  [gradient]="gradient"
+		      [xAxis]="showXAxis"
+		      [yAxis]="showYAxis"
+		      [legend]="showLegend"
+		      [showXAxisLabel]="showXAxisLabel"
+		      [showYAxisLabel]="showYAxisLabel"
+		      [xAxisLabel]="xAxisLabel"
+		      [yAxisLabel]="yAxisLabel">		
+			</ngx-charts-bar-vertical>
+		</div>
+		<div *ngIf="chartType=='line'">
+			<ngx-charts-line-chart
+			  [view]="view"  
+			  [scheme]="colorScheme" [results]="_data2" 
+			  [gradient]="gradient"
+		      [xAxis]="showXAxis"
+		      [yAxis]="showYAxis"
+		      [legend]="showLegend"
+		      [showXAxisLabel]="showXAxisLabel"
+		      [showYAxisLabel]="showYAxisLabel"
+		      [xAxisLabel]="xAxisLabel"
+		      [yAxisLabel]="yAxisLabel">		
+			</ngx-charts-line-chart>
+		</div>
+		<div *ngIf="chartType=='area'">
+		  <ngx-charts-area-chart
+	      [view]="view"
+	      [scheme]="colorScheme"
+	      [results]="_data2"
+	      [gradient]="gradient"
+	      [xAxis]="showXAxis"
+	      [yAxis]="showYAxis"
+	      [legend]="showLegend"
+	      [showXAxisLabel]="showXAxisLabel"
+	      [showYAxisLabel]="showYAxisLabel"
+	      [xAxisLabel]="xAxisLabel"
+	      [yAxisLabel]="yAxisLabel"
+	      [autoScale]="autoScale">
+	      </ngx-charts-area-chart>
+      </div>
+      <div  *ngIf="chartType=='pie'">
+        <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="_data"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"      >
+    	</ngx-charts-pie-chart>
+	      </div>
+	    <div *ngIf="chartType=='groupverticalbar'">
+			<ngx-charts-bar-vertical-2d 
+			  [view]="view"  
+			  [scheme]="colorScheme" [results]="_alternateData" 
+			  [gradient]="gradient"
+		      [xAxis]="showXAxis"
+		      [yAxis]="showYAxis"
+		      [legend]="showLegend"
+		      [showXAxisLabel]="showXAxisLabel"
+		      [showYAxisLabel]="showYAxisLabel"
+		      [xAxisLabel]="xAxisLabel"
+		      [yAxisLabel]="yAxisLabel"
+		      [barPadding]="0"
+		      [groupPadding]="0"
+		      >		
+			</ngx-charts-bar-vertical-2d>
+		</div>
+<!-- 	<div [ngSwitch]="chartType">
+		<div *ngSwitchCase="verticalbar">
+			<ngx-charts-bar-vertical 
+			  [view]="view"  
+			  [scheme]="colorScheme" [results]="_data" 
+			  [gradient]="gradient"
+		      [xAxis]="showXAxis"
+		      [yAxis]="showYAxis"
+		      [legend]="showLegend"
+		      [showXAxisLabel]="showXAxisLabel"
+		      [showYAxisLabel]="showYAxisLabel"
+		      [xAxisLabel]="xAxisLabel"
+		      [yAxisLabel]="yAxisLabel">		
+			</ngx-charts-bar-vertical>
+		</div>
+		<div *ngSwitchCase="line">
+			<ngx-charts-line-chart
+			  [view]="view"  
+			  [scheme]="colorScheme" [results]="_data" 
+			  [gradient]="gradient"
+		      [xAxis]="showXAxis"
+		      [yAxis]="showYAxis"
+		      [legend]="showLegend"
+		      [showXAxisLabel]="showXAxisLabel"
+		      [showYAxisLabel]="showYAxisLabel"
+		      [xAxisLabel]="xAxisLabel"
+		      [yAxisLabel]="yAxisLabel">		
+			</ngx-charts-line-chart>
+		</div>
+	</div> -->
+</div>
+<!-- <div *ngIf="data != undefined && data.length >0">
+	<ngx-charts-bar-vertical [scheme]="colorScheme" [results]="data">
+		
+	</ngx-charts-bar-vertical>
+
+</div>
+ -->
+<div *ngIf="data == undefined || data.length <=0">
+	No data found to plot!
+</div>

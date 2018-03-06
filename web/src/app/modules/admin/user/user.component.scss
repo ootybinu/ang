@@ -1,0 +1,28 @@
+.detailPanel
+{
+	border:1px solid gray;
+	border-radius: 10px;
+	padding:10px 0px 10px 0px;
+	margin:10px 0px 10px 0px;
+}
+.detailItem 
+{
+	border-bottom: 1px solid lightgray;
+	padding:0px 5px 0px 5px;
+	
+}
+.detailItem > ul {list-style-type: none;
+ -webkit-padding-start: 0;
+-webkit-margin-after: 0;
+padding:0px;}
+.detailItem > ul >li {display: inline; }
+.detailItem >label {max-width: 160px; width:50%;
+}
+.req 
+{
+	color: red;
+}
+.newPanel
+{
+	margin:10px 0px 10px 0px;
+}
